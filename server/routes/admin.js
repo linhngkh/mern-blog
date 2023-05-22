@@ -75,7 +75,7 @@ router.get("/dashboard", authMiddleware, async (req, res) => {
 });
 
 // GET - admin creates new post
-router.post("/add-post", authMiddleware, async (req, res) => {
+router.get("/add-post", authMiddleware, async (req, res) => {
   try {
     const locals = {
       title: "Add Post",
@@ -83,7 +83,55 @@ router.post("/add-post", authMiddleware, async (req, res) => {
     };
     const data = await Post.find();
 
-    res.render("admin/ad-post", { locals, layout: adminLayout });
+    res.render("admin/add-post", { locals, layout: adminLayout });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// POST - admin creates new post
+router.post("/add-post", authMiddleware, async (req, res) => {
+  try {
+    const newPost = new Post({
+      title: req.body.title,
+      body: req.body.body,
+    });
+    await Post.create(newPost);
+    res.redirect("/dashboard");
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// GET - admin GET updates new post
+router.get("/edit-post/:id", authMiddleware, async (req, res) => {
+  try {
+    const locals = {
+      title: "Edit Post",
+      description: "Simple Blog created with Nodejs, express, mongoDB",
+    };
+    const data = await Post.findOne({ _id: req.params.id });
+
+    res.render("admin/edit-post", {
+      data,
+      locals,
+      layout: adminLayout,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// PUT- admin updates new post
+router.put("/edit-post/:id", authMiddleware, async (req, res) => {
+  try {
+    await Post.findByIdAndUpdate(req.params.id, {
+      title: req.body.title,
+      body: req.body.body,
+      updatedAt: Date.now(),
+    });
+
+    res.redirect(`/edit-post/${req.params.id}`);
   } catch (error) {
     console.log(error);
   }
@@ -104,6 +152,17 @@ router.post("/register", async (req, res) => {
       }
       res.status(500).json({ message: "Internal server error" });
     }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// DELETE - admin DELETE updates new post
+router.delete("/delete-post/:id", authMiddleware, async (req, res) => {
+  try {
+    await Post.deleteOne({ _id: req.params.id });
+
+    res.redirect("/dashboard");
   } catch (error) {
     console.log(error);
   }
