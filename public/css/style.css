@@ -142,6 +142,7 @@ img {
   font-size: var(--font-size_base);
   font-weight: 700;
   color: var(--black);
+  cursor: pointer;
 }
 
 .header__button button:hover {
@@ -273,7 +274,7 @@ img {
   visibility: hidden;
   transform: translateY(-100px);
   background-color: var(--black);
-  padding: 4px 0;
+  padding: 5px 0;
   position: absolute;
   left: 0;
   right: 0;
@@ -295,6 +296,7 @@ img {
   right: 0;
   color: var(--gray-light);
   padding: 15px;
+  cursor: pointer;
 }
 
 /* admin */
