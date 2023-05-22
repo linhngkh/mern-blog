@@ -3,7 +3,6 @@ const router = express.Router();
 const Post = require("../models/Post");
 
 // GET HOME
-
 router.get("/", async (req, res) => {
   try {
     const locals = {
@@ -34,7 +33,6 @@ router.get("/", async (req, res) => {
 });
 
 // GET post/:id
-
 router.get("/post/:id", async (req, res) => {
   try {
     let slug = req.params.id;
@@ -52,7 +50,8 @@ router.get("/post/:id", async (req, res) => {
     console.log(error);
   }
 });
-// post search term
+
+// POST search term
 
 router.post("/search", async (req, res) => {
   try {
