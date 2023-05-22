@@ -1,16 +1,17 @@
 {
   "name": "mern-blog",
   "version": "1.0.0",
-  "description": "",
+  "description": "blog-mern",
   "main": "index.js",
   "scripts": {
     "start": "app.js",
-    "dev":"nodemon app.js"
+    "dev": "nodemon app.js"
   },
-  "author": "",
+  "author": "linh",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "colors": "^1.4.0",
     "connect-mongo": "^5.0.0",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.3",
