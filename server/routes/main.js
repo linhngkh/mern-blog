@@ -26,6 +26,7 @@ router.get("/", async (req, res) => {
       data,
       current: page,
       nextPage: hasNextPage ? nextPage : null,
+      currentRoute: "/",
     });
   } catch (error) {
     console.log(error);
@@ -45,6 +46,7 @@ router.get("/post/:id", async (req, res) => {
     res.render("post", {
       locals,
       data,
+      currentRoute:`/post/${slug}`
     });
   } catch (error) {
     console.log(error);
