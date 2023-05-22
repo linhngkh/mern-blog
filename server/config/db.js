@@ -3,7 +3,7 @@ const connectDB = async () => {
   try {
     mongoose.set("strictQuery", false);
     const conn = await mongoose.connect(process.env.MONGODB_URI);
-    console.log(`Database connected ${conn.connection.host}`.bgYellow);
+    console.log(`Database connected ${conn.connection.host}`.bgRed);
   } catch (error) {
     console.log(error);
   }

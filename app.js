@@ -9,6 +9,9 @@ const connectDB = require("./server/config/db");
 //connect db
 connectDB();
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 app.use(express.static("public"));
 
 // templating engine
