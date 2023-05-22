@@ -9,6 +9,7 @@ const adminLayout = "../views/layouts/admin.ejs";
 
 //check login
 const authMiddleware = (req, res, next) => {
+  // req.cookies property is used when the user is using cookie-parser middleware
   const token = req.cookies.token;
   if (!token) {
     return res.status(401).json({ message: "Unauthorized" });
@@ -23,7 +24,7 @@ const authMiddleware = (req, res, next) => {
   }
 };
 
-// GET admin - login
+// GET admin - login page
 router.get("/admin", async (req, res) => {
   const locals = {
     title: "NodeJS Blog",
@@ -68,6 +69,21 @@ router.get("/dashboard", authMiddleware, async (req, res) => {
     const data = await Post.find();
 
     res.render("admin/dashboard", { locals, data });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// GET - admin creates new post
+router.post("/add-post", authMiddleware, async (req, res) => {
+  try {
+    const locals = {
+      title: "Add Post",
+      description: "Simple Blog created with Nodejs, express, mongoDB",
+    };
+    const data = await Post.find();
+
+    res.render("admin/ad-post", { locals, layout: adminLayout });
   } catch (error) {
     console.log(error);
   }
