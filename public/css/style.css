@@ -191,18 +191,20 @@ img {
 }
 
 .article-ul {
-  list-style: none;
+  list-style-type: none;
   padding: 0;
   margin: 0;
-  font-size: clamp(1.31rem, calc(1.08rem + 0.22vw), 1.25rem);
+  font-size: clamp(1.13rem, calc(1.08rem + 0.22vw), 1.25rem);
   display: flex;
   flex-direction: column;
 }
 
 .article-list__date {
-  font-size: var(--font-size_base);
-  width: 260px;
+  font-size: 1rem;
+  color: var(--gray);
+  width: 100px;
   display: inline-block;
+  width: 260px;
 }
 
 .article-ul li a {
@@ -257,7 +259,7 @@ img {
   color: var(--black);
 }
 
-.articles {
+.article {
   white-space: pre-wrap;
 }
 
@@ -268,8 +270,8 @@ img {
 
 /* searchbar */
 .searchBar {
-  /* visibility: hidden;
-  transform: translateY(-100px); */
+  visibility: hidden;
+  transform: translateY(-100px);
   background-color: var(--black);
   padding: 4px 0;
   position: absolute;
